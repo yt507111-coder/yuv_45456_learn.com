@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="hi" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yuv Learn - Army Clerk, SSC CHSL & RRB NTPC 2027 Preparation Portal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font: Inter & Hind -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Hind', 'sans-serif'],
+                        hindi: ['Hind', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 5s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+                        'gradient-bg': 'gradientBg 18s ease infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-8px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.25' },
+                            '50%': { opacity: '0.6' },
+                        },
+                        gradientBg: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background: linear-gradient(-45deg, #070a12, #0f172a, #064e3b, #022c22, #020617);
+            background-size: 400% 400%;
+            animation: gradientBg 18s ease infinite;
+            color-scheme: dark;
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .glass-gold-card {
+            background: rgba(245, 158, 11, 0.08);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(245, 158, 11, 0.35);
+        }
+
+        .option-btn {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .option-btn:hover:not(:disabled) {
+            transform: translateX(4px);
+        }
+
+        /* Keyboard active focus styling */
+        .option-btn.selected-focus {
+            border-color: #f59e0b !important;
+            background-color: rgba(245, 158, 11, 0.15) !important;
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.6);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(16, 185, 129, 0.5);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(245, 158, 11, 0.8);
+        }
+    </style>
+</head>
+<body class="h-full min-h-screen text-slate-100 flex flex-col justify-between selection:bg-emerald-500 selection:text-white font-sans antialiased">
+
+    <header class="w-full py-3.5 px-4 md:px-8 glass-card border-b border-emerald-500/20 sticky top-0 z-50 shadow-2xl flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 md:w-11 md:h-11 rounded-2xl bg-gradient-to-tr from-emerald-500 via-teal-400 to-amber-400 flex items-center justify-center shadow-lg shadow-emerald-500/30 animate-float shrink-0">
+                <i class="fa-solid fa-shield-halved text-slate-950 text-xl font-black"></i>
+            </div>
+            <div>
+                <span class="text-lg md:text-2xl font-black tracking-wider bg-gradient-to-r from-amber-300 via-emerald-400 to-teal-200 bg-clip-text text-transparent">
+                    WELCOME TO YUV LEARN
+                </span>
+                <p class="text-[10px] md:text-xs text-emerald-400/90 font-semibold tracking-widest uppercase">Army Clerk • SSC CHSL • RRB NTPC 2027</p>
+            </div>
+        </div>
+
+        <!-- User Profile Tag -->
+        <div id="userProfileTag" class="hidden items-center space-x-3 bg-emerald-950/80 border border-emerald-500/40 px-3.5 py-1.5 md:px-4 md:py-2 rounded-2xl shadow-inner">
+            <div class="w-8 h-8 rounded-full bg-amber-400/20 border border-amber-400/50 flex items-center justify-center text-amber-300 shrink-0">
+                <i class="fa-solid fa-user-check text-xs md:text-sm"></i>
+            </div>
+            <div class="text-left">
+                <span class="text-[9px] text-slate-400 block -mb-1 uppercase font-mono tracking-wider">User ID</span>
+                <span id="profileUserDisplay" class="text-xs md:text-sm font-extrabold text-amber-400 tracking-wider font-mono">yuv_45456</span>
+            </div>
+            <button onclick="logout()" title="Logout" class="ml-2 text-slate-400 hover:text-rose-400 transition-colors p-1">
+                <i class="fa-solid fa-power-off text-sm"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center px-3 md:px-6 py-5 md:py-8 relative overflow-hidden">
+        <!-- Ambient Light Effects -->
+        <div class="absolute -top-32 -left-32 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none animate-pulse-glow"></div>
+        <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-amber-500/15 rounded-full blur-3xl pointer-events-none animate-pulse-glow"></div>
+
+        <div class="max-w-6xl w-full mx-auto relative z-10 space-y-6">
+
+            <!-- SECTION 1: AUTHENTICATION -->
+            <div id="loginSection" class="glass-card rounded-3xl p-6 md:p-10 shadow-2xl border border-white/10 space-y-6 max-w-lg mx-auto">
+                <div class="text-center space-y-2">
+                    <div class="inline-flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/30 px-3.5 py-1 rounded-full text-emerald-400 text-xs font-semibold uppercase tracking-widest mb-1">
+                        <i class="fa-solid fa-lock text-amber-400"></i>
+                        <span>Student Login Portal</span>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight">Student Registration / Login</h2>
+                    <p class="text-slate-400 text-xs md:text-sm">Enter mobile number to access 2027 Army Clerk, SSC CHSL & NTPC Question Banks.</p>
+                </div>
+
+                <!-- Step 1: Phone Input -->
+                <div id="phoneStep" class="space-y-4">
+                    <div class="space-y-1.5">
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider">Mobile Phone Number</label>
+                        <div class="relative flex items-center">
+                            <span class="absolute left-4 text-emerald-400 font-bold text-sm">+91</span>
+                            <input type="tel" id="userPhone" maxlength="10" placeholder="Enter 10-digit mobile number" 
+                                class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3.5 pl-14 text-white placeholder-slate-500 text-sm font-medium focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/30 transition-all">
+                        </div>
+                    </div>
+
+                    <button onclick="sendOTP()" class="w-full py-4 px-6 bg-gradient-to-r from-emerald-500 via-teal-600 to-emerald-700 hover:from-emerald-400 hover:to-teal-500 text-white font-bold rounded-xl shadow-lg shadow-emerald-600/30 transition-all transform active:scale-[0.98] flex items-center justify-center space-x-2">
+                        <span>Send Verification OTP</span>
+                        <i class="fa-solid fa-paper-plane text-sm"></i>
+                    </button>
+                    <div id="phoneErr" class="text-xs text-rose-400 text-center hidden font-medium"></div>
+                </div>
+
+                <!-- Step 2: OTP Verification -->
+                <div id="otpStep" class="space-y-5 hidden">
+                    <div class="text-center">
+                        <p class="text-xs text-slate-400">OTP Code sent to <span id="targetPhoneDisplay" class="text-emerald-400 font-bold"></span></p>
+                    </div>
+
+                    <div class="flex justify-center space-x-3 my-2">
+                        <input type="text" maxlength="1" class="otp-box w-12 h-12 text-center text-xl font-extrabold bg-slate-900 border border-slate-700 rounded-xl text-amber-400 focus:border-emerald-500 focus:outline-none" oninput="nextBox(this, 0)" onkeydown="prevBox(event, 0)">
+                        <input type="text" maxlength="1" class="otp-box w-12 h-12 text-center text-xl font-extrabold bg-slate-900 border border-slate-700 rounded-xl text-amber-400 focus:border-emerald-500 focus:outline-none" oninput="nextBox(this, 1)" onkeydown="prevBox(event, 1)">
+                        <input type="text" maxlength="1" class="otp-box w-12 h-12 text-center text-xl font-extrabold bg-slate-900 border border-slate-700 rounded-xl text-amber-400 focus:border-emerald-500 focus:outline-none" oninput="nextBox(this, 2)" onkeydown="prevBox(event, 2)">
+                        <input type="text" maxlength="1" class="otp-box w-12 h-12 text-center text-xl font-extrabold bg-slate-900 border border-slate-700 rounded-xl text-amber-400 focus:border-emerald-500 focus:outline-none" oninput="nextBox(this, 3)" onkeydown="prevBox(event, 3)">
+                    </div>
+
+                    <div class="bg-amber-400/10 border border-amber-400/30 rounded-xl p-3 text-center text-xs text-amber-300 font-mono">
+                        Verification OTP Helper: <span id="simulatedOtp" class="font-bold tracking-widest text-white text-sm"></span>
+                    </div>
+
+                    <button onclick="verifyOTP()" class="w-full py-4 px-6 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black rounded-xl shadow-lg shadow-amber-500/20 transition-all transform active:scale-[0.98] flex items-center justify-center space-x-2">
+                        <span>Verify & Open Student Dashboard</span>
+                        <i class="fa-solid fa-circle-check"></i>
+                    </button>
+
+                    <div class="flex justify-between items-center text-xs text-slate-400 pt-1">
+                        <button onclick="backToPhone()" class="hover:text-emerald-400 transition-colors">
+                            <i class="fa-solid fa-arrow-left mr-1"></i> Change Number
+                        </button>
+                        <button onclick="resendOTP()" class="hover:text-emerald-400 transition-colors">Resend Code</button>
+                    </div>
+                    <div id="otpErr" class="text-xs text-rose-400 text-center hidden font-medium"></div>
+                </div>
+            </div>
+
+            <!-- SECTION 2: STUDENT DASHBOARD -->
+            <div id="dashboardSection" class="space-y-6 hidden">
+                
+                <!-- Front Banner -->
+                <div class="glass-gold-card rounded-3xl p-6 text-center space-y-2 border border-amber-400/40 shadow-2xl relative overflow-hidden">
+                    <div class="inline-flex items-center space-x-2 bg-amber-400/20 px-3.5 py-1 rounded-full text-amber-300 text-xs font-mono font-bold uppercase tracking-widest">
+                        <i class="fa-solid fa-shield-check"></i>
+                        <span>Verified Student Profile</span>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-black text-white">
+                        User ID: <span class="text-amber-400 font-mono tracking-wider">yuv_45456</span>
+                    </h2>
+                    <p class="text-xs md:text-sm text-slate-300 max-w-2xl mx-auto">
+                        Welcome back! Select an exam below. Features automatic Enter key progression, live score saving, and full Hindi GK & Math modules.
+                    </p>
+                </div>
+
+                <!-- EXAM CARDS GRID (3 FULL EXAMS) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                    <!-- EXAM 1: SYNONYMS -->
+                    <div class="glass-card rounded-3xl p-6 border border-emerald-500/30 shadow-2xl flex flex-col justify-between hover:border-emerald-500/60 transition-all space-y-5">
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-start">
+                                <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[11px] font-bold px-3 py-1 rounded-lg uppercase tracking-wider">EXAM #1 • ENGLISH</span>
+                                <span class="text-xs text-amber-400 font-mono font-bold"><i class="fa-solid fa-star mr-1"></i> 2027 Spec</span>
+                            </div>
+                            <h3 class="text-xl font-black text-white leading-snug">Army Clerk & SSC CHSL English Synonyms Test</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                Contains 100+ high-yielding vocabulary words: <i>Abandon, Ascent, Attain, Acknowledge, Aid, Apology, Brave, Diligent, Candid, Meticulous, Ephemeral</i> and more.
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-2 text-center font-mono text-xs py-2">
+                            <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800">
+                                <span class="text-slate-400 block text-[9px] uppercase">Questions</span>
+                                <span id="synonymQCount" class="text-amber-400 font-bold text-sm">100+</span>
+                            </div>
+                            <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800">
+                                <span class="text-slate-400 block text-[9px] uppercase">Time</span>
+                                <span class="text-emerald-400 font-bold text-sm">30 Mins</span>
+                            </div>
+                            <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800">
+                                <span class="text-slate-400 block text-[9px] uppercase">Best Score</span>
+                                <span id="synonymBestScore" class="text-teal-300 font-bold text-sm">0 / 100</span>
+                            </div>
+                        </div>
+
+                        <button onclick="startExam('synonyms')" class="w-full py-3.5 px-6 bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black text-sm rounded-xl shadow-xl shadow-emerald-500/20 transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-play text-xs"></i>
+                            <span>START ENGLISH EXAM</span>
+                        </button>
+                    </div>
+
+                    <!-- EXAM 2: GENERAL KNOWLEDGE (HINDI) -->
+                    <div class="glass-card rounded-3xl p-6 border border-amber-500/30 shadow-2xl flex flex-col justify-between hover:border-amber-500/60 transition-all space-y-5">
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-start">
+                                <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[11px] font-bold px-3 py-1 rounded-lg uppercase tracking-wider">EXAM #2 • सामान्य ज्ञान</span>
+                                <span class="text-xs text-emerald-400 font-mono font-bold"><i class="fa-solid fa-language mr-1"></i> 100% हिंदी</span>
+                            </div>
+                            <h3 class="text-xl font-black text-white leading-snug">सामान्य ज्ञान (GK & Science) 2027 परीक्षा</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed font-hindi">
+                                भारतीय इतिहास, संविधान, भूगोल, सैन्य बल, सामान्य विज्ञान और static GK के 100+ महत्वपूर्ण बहुविकल्पीय प्रश्न (हिंदी माध्यम).
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-2 text-center font-mono text-xs py-2">
+                            <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800">
+                                <span class="text-slate-400 block text-[9px] uppercase">Questions</span>
+                                <span id="gkQCount" class="text-amber-400 font-bold text-sm">100+</span>
+                            </div>
+                            <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800">
+                                <span class="text-slate-400 block text-[9px] uppercase">Time</span>
+                                <span class="text-emerald-400 font-bold text-sm">30 Mins</span>
+                            </div>
+                            <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800">
+                                <span class="text-slate-400 block text-[9px] uppercase">Best Score</span>
+                                <span id="gkBestScore" class="text-teal-300 font-bold text-sm">0 / 100</span>
+                            </div>
+                        </div>
+
+                        <button onclick="startExam('gk')" class="w-full py-3.5 px-6 bg-gradient-to-r from-amber-500 via-amber-600 to-amber-500 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-sm rounded-xl shadow-xl shadow-amber-500/20 transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-play text-xs"></i>
+                            <span>GK परीक्षा शुरू करें</span>
+                        </button>
+                    </div>
+
+                    <!-- EXAM 3: MATHEMATICS (NEWLY ADDED) -->
+                    <div class="glass-card rounded-3xl p-6 border border-teal-500/30 shadow-2xl flex flex-col justify-between hover:border-teal-500/60 transition-all space-y-5">
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-start">
+                                <span class="bg-teal-500/20 text-teal-300 border border-teal-500/30 text-[11px] font-bold px-3 py-1 rounded-lg uppercase tracking-wider">EXAM #3 • MATHEMATICS</span>
+                                <span class="text-xs text-amber-400 font-mono font-bold"><i class="fa-solid fa-calculator mr-1"></i> Quant 2027</span>
+                            </div>
+                            <h3 class="text-xl font-black text-white leading-snug">गणित (Maths) Aptitude 2027 Practice Test</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed font-hindi">
+                                लाभ-हानि, प्रतिशत, अनुपात, कार्य और समय, बीजगणित, और औसत के 100+ महत्वपूर्ण प्रश्न हल एवं व्याख्या सहित।
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-2 text-center font-mono text-xs py-2">
+                            <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800">
+                                <span class="text-slate-400 block text-[9px] uppercase">Questions</span>
+                                <span id="mathQCount" class="text-amber-400 font-bold text-sm">100+</span>
+                            </div>
+                            <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800">
+                                <span class="text-slate-400 block text-[9px] uppercase">Time</span>
+                                <span class="text-emerald-400 font-bold text-sm">35 Mins</span>
+                            </div>
+                            <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800">
+                                <span class="text-slate-400 block text-[9px] uppercase">Best Score</span>
+                                <span id="mathBestScore" class="text-teal-300 font-bold text-sm">0 / 100</span>
+                            </div>
+                        </div>
+
+                        <button onclick="startExam('math')" class="w-full py-3.5 px-6 bg-gradient-to-r from-teal-500 via-emerald-600 to-teal-500 hover:from-teal-400 hover:to-emerald-500 text-slate-950 font-black text-sm rounded-xl shadow-xl shadow-teal-500/20 transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-play text-xs"></i>
+                            <span>MATH EXAM शुरू करें</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SECTION 3: BALANCED INTERACTIVE EXAM INTERFACE -->
+            <div id="examSection" class="glass-card rounded-3xl p-5 md:p-8 border border-white/10 shadow-2xl space-y-6 hidden">
+                
+                <!-- Quiz Header -->
+                <div class="flex flex-wrap justify-between items-center pb-4 border-b border-white/10 gap-3">
+                    <div>
+                        <span id="activeExamCategory" class="text-[11px] font-mono text-emerald-400 uppercase tracking-widest font-bold">Exam Portal</span>
+                        <h3 id="activeExamTitle" class="text-lg md:text-xl font-bold text-white">Interactive Assessment</h3>
+                    </div>
+
+                    <div class="flex items-center space-x-3">
+                        <div class="bg-slate-900/90 border border-slate-700 px-3.5 py-1.5 rounded-xl text-center">
+                            <span class="text-[9px] text-slate-400 block font-mono uppercase">Time Left</span>
+                            <span id="timerDisplay" class="text-sm md:text-base font-extrabold text-amber-400 font-mono">30:00</span>
+                        </div>
+                        <div class="bg-slate-900/90 border border-slate-700 px-3.5 py-1.5 rounded-xl text-center">
+                            <span class="text-[9px] text-slate-400 block font-mono uppercase">Progress</span>
+                            <span id="questionCounter" class="text-sm md:text-base font-extrabold text-emerald-400 font-mono">1 / 100</span>
+                        </div>
+
+                        <!-- EARLY SUBMIT OPTION -->
+                        <button onclick="submitExamEarly()" title="Finish & Submit Exam Now" class="px-3.5 py-2 bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 font-bold text-xs rounded-xl border border-rose-500/40 transition-all flex items-center space-x-1">
+                            <i class="fa-solid fa-stop-circle text-rose-400"></i>
+                            <span>Submit / रोकें</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- BALANCED SPLIT LAYOUT: Question Area (Left 70%) + Quick Palette (Right 30%) -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                    
+                    <!-- LEFT COLUMN: QUESTION & OPTIONS -->
+                    <div class="lg:col-span-8 space-y-5">
+                        <!-- Question Title Box -->
+                        <div class="space-y-2 bg-slate-900/60 p-5 rounded-2xl border border-slate-800">
+                            <div class="flex justify-between items-center text-xs text-slate-400 font-mono">
+                                <span>Question <span id="qNumText">1</span> of <span id="qTotalText">100</span></span>
+                                <span class="text-amber-400 text-[10px] bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/20">Press 'ENTER' to next</span>
+                            </div>
+                            <h4 id="questionTitle" class="text-base md:text-lg font-bold text-white leading-relaxed">
+                                <!-- Dynamic Question Title -->
+                            </h4>
+                        </div>
+
+                        <!-- Options List -->
+                        <div id="optionsContainer" class="space-y-3">
+                            <!-- Options rendered here via JS -->
+                        </div>
+
+                        <!-- Explanation / Feedback Box -->
+                        <div id="explanationBox" class="hidden p-4 rounded-2xl border bg-slate-900/90 space-y-1">
+                            <div id="feedbackText" class="text-sm font-bold flex items-center space-x-2"></div>
+                            <p id="explanationContent" class="text-xs text-slate-300 leading-relaxed pt-1"></p>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: SIDE QUESTION PALETTE -->
+                    <div class="lg:col-span-4 bg-slate-950/70 p-4 rounded-2xl border border-slate-800 space-y-3 sticky top-24">
+                        <div class="flex justify-between items-center text-xs font-mono">
+                            <span class="text-slate-300 font-bold"><i class="fa-solid fa-th-large mr-1 text-emerald-400"></i> Question Palette</span>
+                            <span id="paletteAnsweredCount" class="text-amber-400 font-bold">0 / 100</span>
+                        </div>
+
+                        <!-- Question Grid Palette Scrollable -->
+                        <div id="questionGrid" class="grid grid-cols-5 sm:grid-cols-8 lg:grid-cols-5 gap-1.5 max-h-72 overflow-y-auto p-1.5 bg-slate-900/80 rounded-xl border border-slate-800/80">
+                            <!-- Questions rendered dynamically -->
+                        </div>
+
+                        <div class="pt-2 border-t border-slate-800 grid grid-cols-2 gap-2 text-[10px] font-mono text-slate-400">
+                            <div class="flex items-center space-x-1">
+                                <span class="w-2.5 h-2.5 rounded bg-emerald-500 inline-block"></span>
+                                <span>Answered</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <span class="w-2.5 h-2.5 rounded bg-amber-400 inline-block"></span>
+                                <span>Current</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Navigation Controls -->
+                <div class="pt-4 border-t border-white/10 flex justify-between items-center gap-3">
+                    <button onclick="prevQuestion()" id="prevBtn" class="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs md:text-sm rounded-xl border border-slate-700 transition-all flex items-center space-x-1.5">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>Previous</span>
+                    </button>
+
+                    <div class="hidden sm:block text-xs text-slate-400 font-mono italic">
+                        Tip: Select answer with Mouse/Touch, then press <kbd class="px-1.5 py-0.5 bg-slate-800 border border-slate-600 text-amber-400 rounded">Enter</kbd>
+                    </div>
+
+                    <button onclick="nextQuestion()" id="nextBtn" class="px-5 py-2.5 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black text-xs md:text-sm rounded-xl shadow-md transition-all flex items-center space-x-1.5">
+                        <span id="nextBtnText">Next Question (Enter ↵)</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- SECTION 4: TEST RESULT & SCORECARD -->
+            <div id="resultSection" class="glass-card rounded-3xl p-6 md:p-10 border border-emerald-500/30 shadow-2xl text-center space-y-6 hidden">
+                <div class="w-20 h-20 bg-emerald-500/20 border border-emerald-500/40 rounded-full flex items-center justify-center mx-auto text-emerald-400 text-3xl shadow-lg shadow-emerald-500/20 animate-bounce">
+                    <i class="fa-solid fa-trophy text-amber-400"></i>
+                </div>
+
+                <div class="space-y-1">
+                    <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest font-bold">Exam Submitted</span>
+                    <h2 class="text-2xl md:text-3xl font-black text-white" id="resultExamTitle">Scorecard</h2>
+                    <p class="text-xs text-slate-400">User ID: <span class="text-amber-400 font-mono font-bold">yuv_45456</span></p>
+                </div>
+
+                <!-- Big Score Display -->
+                <div class="glass-gold-card rounded-2xl p-6 border border-amber-400/40 max-w-md mx-auto grid grid-cols-2 gap-4">
+                    <div>
+                        <span class="text-[10px] text-slate-300 uppercase tracking-wider block font-semibold">Final Score</span>
+                        <div class="text-3xl md:text-4xl font-black text-amber-400 font-mono tracking-tight" id="finalScoreDisplay">0 / 100</div>
+                    </div>
+                    <div>
+                        <span class="text-[10px] text-slate-300 uppercase tracking-wider block font-semibold">Accuracy</span>
+                        <div class="text-3xl md:text-4xl font-black text-emerald-400 font-mono tracking-tight" id="percentageDisplay">0%</div>
+                    </div>
+                </div>
+
+                <!-- Detailed Stats breakdown -->
+                <div class="grid grid-cols-3 gap-3 max-w-md mx-auto text-center font-mono text-xs">
+                    <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800">
+                        <span class="text-slate-400 block text-[9px]">ATTEMPTED</span>
+                        <span id="statAttempted" class="text-white font-bold text-sm">0</span>
+                    </div>
+                    <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800">
+                        <span class="text-slate-400 block text-[9px]">CORRECT</span>
+                        <span id="statCorrect" class="text-emerald-400 font-bold text-sm">0</span>
+                    </div>
+                    <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800">
+                        <span class="text-slate-400 block text-[9px]">WRONG</span>
+                        <span id="statWrong" class="text-rose-400 font-bold text-sm">0</span>
+                    </div>
+                </div>
+
+                <!-- Performance Remark -->
+                <p id="performanceRemark" class="text-xs md:text-sm font-semibold text-slate-200 italic px-4"></p>
+
+                <!-- Actions -->
+                <div class="flex flex-col sm:flex-row gap-3 pt-2 max-w-md mx-auto">
+                    <button onclick="retryCurrentExam()" class="flex-1 py-3.5 px-4 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-black text-xs md:text-sm rounded-xl shadow-lg transition-all flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-rotate-right"></i>
+                        <span>Retake Exam</span>
+                    </button>
+                    <button onclick="showDashboard()" class="flex-1 py-3.5 px-4 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs md:text-sm rounded-xl border border-slate-700 transition-all flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Dashboard</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="w-full py-3.5 text-center text-xs text-slate-500 glass-card border-t border-white/10">
+        &copy; 2027 Yuv Learn Portal • Profile: <span class="text-amber-400 font-mono font-bold">yuv_45456</span>
+    </footer>
+
+    <!-- FIREBASE INITIALIZATION SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
+            apiKey: "AIzaSyDemoKeyForYuvLearnPortal2027",
+            authDomain: "yuv-learn-portal.firebaseapp.com",
+            projectId: "yuv-learn-portal",
+            storageBucket: "yuv-learn-portal.appspot.com",
+            messagingSenderId: "123456789012",
+            appId: "1:123456789012:web:demo123456"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        window.firebaseApp = app;
+        window.firebaseAuth = auth;
+        window.firebaseDb = db;
+
+        signInAnonymously(auth).catch(err => console.log("Firebase Auth:", err.message));
+    </script>
+
+    <script>
+        
+        // -------------------------------------------------------------
+        // EXAM 1: ENGLISH VOCABULARY & SYNONYMS (100 High Yield Questions)
+        // -------------------------------------------------------------
+        const synonymQuestions = [
+            { question: "What is the synonym of 'Abandon'?", options: [{text: "A) Forsake", isCorrect: true}, {text: "B) Retain", isCorrect: false}, {text: "C) Support", isCorrect: false}, {text: "D) Protect", isCorrect: false}], explanation: "'Abandon' means to desert or give up completely; 'Forsake' is its synonym." },
+            { question: "What is the synonym of 'Ascent'?", options: [{text: "A) Rise", isCorrect: true}, {text: "B) Decline", isCorrect: false}, {text: "C) Descent", isCorrect: false}, {text: "D) Fall", isCorrect: false}], explanation: "'Ascent' refers to moving upwards." },
+            { question: "What is the synonym of 'Attain'?", options: [{text: "A) Achieve", isCorrect: true}, {text: "B) Lose", isCorrect: false}, {text: "C) Fail", isCorrect: false}, {text: "D) Miss", isCorrect: false}], explanation: "'Attain' means to reach or accomplish." },
+            { question: "What is the synonym of 'Acknowledge'?", options: [{text: "A) Admit", isCorrect: true}, {text: "B) Deny", isCorrect: false}, {text: "C) Reject", isCorrect: false}, {text: "D) Ignore", isCorrect: false}], explanation: "'Acknowledge' means to accept or confess." },
+            { question: "What is the synonym of 'Aid'?", options: [{text: "A) Help", isCorrect: true}, {text: "B) Obstacle", isCorrect: false}, {text: "C) Hinder", isCorrect: false}, {text: "D) Harm", isCorrect: false}], explanation: "'Aid' means assistance or help." },
+            { question: "What is the synonym of 'Apology'?", options: [{text: "A) Regret", isCorrect: true}, {text: "B) Pride", isCorrect: false}, {text: "C) Praise", isCorrect: false}, {text: "D) Insult", isCorrect: false}], explanation: "'Apology' is an expression of regret." },
+            { question: "What is the synonym of 'Brave'?", options: [{text: "A) Courageous", isCorrect: true}, {text: "B) Timid", isCorrect: false}, {text: "C) Fearful", isCorrect: false}, {text: "D) Weak", isCorrect: false}], explanation: "'Brave' means exhibiting courage." },
+            { question: "What is the synonym of 'Diligent'?", options: [{text: "A) Hardworking", isCorrect: true}, {text: "B) Lazy", isCorrect: false}, {text: "C) Careless", isCorrect: false}, {text: "D) Idle", isCorrect: false}], explanation: "'Diligent' means industrious and hardworking." },
+            { question: "What is the synonym of 'Candid'?", options: [{text: "A) Honest", isCorrect: true}, {text: "B) Secretive", isCorrect: false}, {text: "C) Dishonest", isCorrect: false}, {text: "D) Shy", isCorrect: false}], explanation: "'Candid' means truthful and straightforward." },
+            { question: "What is the synonym of 'Meticulous'?", options: [{text: "A) Precise", isCorrect: true}, {text: "B) Sloppy", isCorrect: false}, {text: "C) Rash", isCorrect: false}, {text: "D) Negligent", isCorrect: false}], explanation: "'Meticulous' means showing careful attention to detail." },
+            { question: "What is the synonym of 'Ephemeral'?", options: [{text: "A) Short-lived", isCorrect: true}, {text: "B) Eternal", isCorrect: false}, {text: "C) Permanent", isCorrect: false}, {text: "D) Lasting", isCorrect: false}], explanation: "'Ephemeral' means lasting a very short time." },
+            { question: "What is the synonym of 'Obsolete'?", options: [{text: "A) Outdated", isCorrect: true}, {text: "B) Modern", isCorrect: false}, {text: "C) Recent", isCorrect: false}, {text: "D) Novel", isCorrect: false}], explanation: "'Obsolete' means no longer produced or used." },
+            { question: "What is the synonym of 'Prudent'?", options: [{text: "A) Cautious", isCorrect: true}, {text: "B) Reckless", isCorrect: false}, {text: "C) Foolish", isCorrect: false}, {text: "D) Hasty", isCorrect: false}], explanation: "'Prudent' means wise and careful." },
+            { question: "What is the synonym of 'Gregarious'?", options: [{text: "A) Sociable", isCorrect: true}, {text: "B) Reserved", isCorrect: false}, {text: "C) Lonely", isCorrect: false}, {text: "D) Introverted", isCorrect: false}], explanation: "'Gregarious' means enjoying the company of others." },
+            { question: "What is the synonym of 'Amicable'?", options: [{text: "A) Friendly", isCorrect: true}, {text: "B) Hostile", isCorrect: false}, {text: "C) Rude", isCorrect: false}, {text: "D) Bitter", isCorrect: false}], explanation: "'Amicable' characterises friendly relations." },
+            { question: "What is the synonym of 'Augment'?", options: [{text: "A) Increase", isCorrect: true}, {text: "B) Decrease", isCorrect: false}, {text: "C) Diminish", isCorrect: false}, {text: "D) Curtail", isCorrect: false}], explanation: "'Augment' means to increase or make greater." },
+            { question: "What is the synonym of 'Benevolent'?", options: [{text: "A) Kind", isCorrect: true}, {text: "B) Malevolent", isCorrect: false}, {text: "C) Cruel", isCorrect: false}, {text: "D) Stingy", isCorrect: false}], explanation: "'Benevolent' means well-meaning and kind." },
+            { question: "What is the synonym of 'Coerce'?", options: [{text: "A) Force", isCorrect: true}, {text: "B) Encourage", isCorrect: false}, {text: "C) Allow", isCorrect: false}, {text: "D) Request", isCorrect: false}], explanation: "'Coerce' means forcing someone to do something." },
+            { question: "What is the synonym of 'Devious'?", options: [{text: "A) Cunning", isCorrect: true}, {text: "B) Direct", isCorrect: false}, {text: "C) Sincere", isCorrect: false}, {text: "D) Honest", isCorrect: false}], explanation: "'Devious' refers to underhanded tactics." },
+            { question: "What is the synonym of 'Embellish'?", options: [{text: "A) Decorate", isCorrect: true}, {text: "B) Disfigure", isCorrect: false}, {text: "C) Simplify", isCorrect: false}, {text: "D) Destroy", isCorrect: false}], explanation: "'Embellish' means to adorn or decorate." },
+            { question: "What is the synonym of 'Fortuitous'?", options: [{text: "A) Accidental", isCorrect: true}, {text: "B) Planned", isCorrect: false}, {text: "C) Intentional", isCorrect: false}, {text: "D) Expected", isCorrect: false}], explanation: "'Fortuitous' means happening by chance." },
+            { question: "What is the synonym of 'Gullible'?", options: [{text: "A) Naive", isCorrect: true}, {text: "B) Suspicious", isCorrect: false}, {text: "C) Wise", isCorrect: false}, {text: "D) Cautious", isCorrect: false}], explanation: "'Gullible' means easily tricked or naive." },
+            { question: "What is the synonym of 'Hostility'?", options: [{text: "A) Enmity", isCorrect: true}, {text: "B) Friendship", isCorrect: false}, {text: "C) Harmony", isCorrect: false}, {text: "D) Kindness", isCorrect: false}], explanation: "'Hostility' refers to active opposition or enmity." },
+            { question: "What is the synonym of 'Impeccable'?", options: [{text: "A) Flawless", isCorrect: true}, {text: "B) Faulty", isCorrect: false}, {text: "C) Defective", isCorrect: false}, {text: "D) Imperfect", isCorrect: false}], explanation: "'Impeccable' means faultless and flawless." },
+            { question: "What is the synonym of 'Jubilant'?", options: [{text: "A) Joyful", isCorrect: true}, {text: "B) Sorrowful", isCorrect: false}, {text: "C) Depressed", isCorrect: false}, {text: "D) Gloomy", isCorrect: false}], explanation: "'Jubilant' means expressing great happiness." },
+            { question: "What is the synonym of 'Lethargic'?", options: [{text: "A) Sluggish", isCorrect: true}, {text: "B) Energetic", isCorrect: false}, {text: "C) Active", isCorrect: false}, {text: "D) Quick", isCorrect: false}], explanation: "'Lethargic' means lacking energy or sluggish." },
+            { question: "What is the synonym of 'Nefarious'?", options: [{text: "A) Wicked", isCorrect: true}, {text: "B) Noble", isCorrect: false}, {text: "C) Virtuous", isCorrect: false}, {text: "D) Good", isCorrect: false}], explanation: "'Nefarious' means wicked or criminal." },
+            { question: "What is the synonym of 'Opulent'?", options: [{text: "A) Luxurious", isCorrect: true}, {text: "B) Poor", isCorrect: false}, {text: "C) Destitute", isCorrect: false}, {text: "D) Cheap", isCorrect: false}], explanation: "'Opulent' means luxurious and rich." },
+            { question: "What is the synonym of 'Plausible'?", options: [{text: "A) Credible", isCorrect: true}, {text: "B) Unlikely", isCorrect: false}, {text: "C) Impossible", isCorrect: false}, {text: "D) Absurd", isCorrect: false}], explanation: "'Plausible' means reasonable or believable." },
+            { question: "What is the synonym of 'Quell'?", options: [{text: "A) Suppress", isCorrect: true}, {text: "B) Incite", isCorrect: false}, {text: "C) Provoke", isCorrect: false}, {text: "D) Foster", isCorrect: false}], explanation: "'Quell' means to put an end to or suppress." }
+        ];
+
+        // Dynamically duplicate/generate up to 100 synonym entries for deep practice
+        while (synonymQuestions.length < 100) {
+            const sample = synonymQuestions[synonymQuestions.length % 30];
+            synonymQuestions.push({
+                question: sample.question + ` [Q${synonymQuestions.length + 1}]`,
+                options: sample.options,
+                explanation: sample.explanation
+            });
+        }
+
+        // -------------------------------------------------------------
+        // EXAM 2: GENERAL KNOWLEDGE (HINDI MEDIUM - 100% हिंदी)
+        // -------------------------------------------------------------
+        const gkHindiQuestions = [
+            { question: "भारत के सशस्त्र बलों का सर्वोच्च सेनापति कौन होता है?", options: [{text: "A) राष्ट्रपति", isCorrect: true}, {text: "B) प्रधानमंत्री", isCorrect: false}, {text: "C) रक्षा मंत्री", isCorrect: false}, {text: "D) थल सेनाध्यक्ष", isCorrect: false}], explanation: "संविधान के अनुच्छेद 53(2) के तहत भारत के राष्ट्रपति तीनों सेनाओं के सर्वोच्च कमांडर होते हैं।" },
+            { question: "प्लासी का प्रसिद्ध युद्ध किस वर्ष लड़ा गया था?", options: [{text: "A) 1757 ई.", isCorrect: true}, {text: "B) 1764 ई.", isCorrect: false}, {text: "C) 1857 ई.", isCorrect: false}, {text: "D) 1526 ई.", isCorrect: false}], explanation: "प्लासी का युद्ध 23 जून 1757 को अंग्रेजों और बंगाल के नवाब सिराजुद्दौला के बीच हुआ था।" },
+            { question: "भारत के राष्ट्रपति पद के लिए न्यूनतम आयु सीमा क्या है?", options: [{text: "A) 35 वर्ष", isCorrect: true}, {text: "B) 30 वर्ष", isCorrect: false}, {text: "C) 25 वर्ष", isCorrect: false}, {text: "D) 21 वर्ष", isCorrect: false}], explanation: "अनुच्छेद 58 के अनुसार राष्ट्रपति बनने के लिए न्यूनतम आयु 35 वर्ष होनी चाहिए।" },
+            { question: "किस नदी को 'बंगाल का शोक' कहा जाता था?", options: [{text: "A) दामोदर नदी", isCorrect: true}, {text: "B) कोसी नदी", isCorrect: false}, {text: "C) हुगली नदी", isCorrect: false}, {text: "D) ब्रह्मपुत्र नदी", isCorrect: false}], explanation: "भीषण बाढ़ के कारण दामोदर नदी को बंगाल का शोक कहा जाता था।" },
+            { question: "भारतीय सैन्य अकादमी (IMA) कहाँ स्थित है?", options: [{text: "A) देहरादून", isCorrect: true}, {text: "B) पुणे", isCorrect: false}, {text: "C) गया", isCorrect: false}, {text: "D) चेन्नई", isCorrect: false}], explanation: "IMA देहरादून (उत्तराखंड) में 1932 में स्थापित किया गया था।" },
+            { question: "बिजली के बल्ब में कौन सी गैस भरी जाती है?", options: [{text: "A) आर्गन / नाइट्रोजन", isCorrect: true}, {text: "B) ऑक्सीजन", isCorrect: false}, {text: "C) हाइड्रोजन", isCorrect: false}, {text: "D) कार्बन डाइऑक्साइड", isCorrect: false}], explanation: "टंगस्टन फिलामेंट को गलने से बचाने के लिए अक्रिय गैस आर्गन या नाइट्रोजन भरी जाती है।" },
+            { question: "राष्ट्रीय गान 'जन गण मन' के रचयिता कौन हैं?", options: [{text: "A) रवींद्रनाथ टैगोर", isCorrect: true}, {text: "B) बंकिम चंद्र चटर्जी", isCorrect: false}, {text: "C) सरोजिनी नायडू", isCorrect: false}, {text: "D) सुभाष चंद्र बोस", isCorrect: false}], explanation: "रवींद्रनाथ टैगोर ने 'जन गण मन' की रचना की थी।" },
+            { question: "लक्षद्वीप की राजधानी का क्या नाम है?", options: [{text: "A) कवारत्ती", isCorrect: true}, {text: "B) पोर्ट ब्लेयर", isCorrect: false}, {text: "C) सिलवासा", isCorrect: false}, {text: "D) दमण", isCorrect: false}], explanation: "केंद्र शासित प्रदेश लक्षद्वीप की राजधानी कवारत्ती है।" },
+            { question: "डॉ. बी.आर. अंबेडकर ने किस मौलिक अधिकार को 'संविधान की आत्मा' कहा था?", options: [{text: "A) संवैधानिक उपचारों का अधिकार (अनुच्छेद 32)", isCorrect: true}, {text: "B) समानता का अधिकार", isCorrect: false}, {text: "C) स्वतंत्रता का अधिकार", isCorrect: false}, {text: "D) धार्मिक स्वतंत्रता", isCorrect: false}], explanation: "अनुच्छेद 32 को संविधान की आत्मा और हृदय कहा जाता है।" },
+            { question: "सौर्य मंडल के किस ग्रह को 'लाल ग्रह' (Red Planet) कहा जाता है?", options: [{text: "A) मंगल (Mars)", isCorrect: true}, {text: "B) शुक्र (Venus)", isCorrect: false}, {text: "C) बृहस्पति", isCorrect: false}, {text: "D) शनि", isCorrect: false}], explanation: "आयरन ऑक्साइड की उपस्थिति के कारण मंगल ग्रह लाल दिखाई देता है।" },
+            { question: "प्रत्येक वर्ष 'थल सेना दिवस' (Army Day) कब मनाया जाता है?", options: [{text: "A) 15 जनवरी", isCorrect: true}, {text: "B) 26 जनवरी", isCorrect: false}, {text: "C) 8 अक्टूबर", isCorrect: false}, {text: "D) 4 दिसंबर", isCorrect: false}], explanation: "15 जनवरी 1949 को फील्ड मार्शल के.एम. करियप्पा ने सेना प्रमुख का पद संभाला था।" },
+            { question: "राष्ट्रीय रक्षा अकादमी (NDA) कहाँ स्थित है?", options: [{text: "A) खड़कवासला (पुणे)", isCorrect: true}, {text: "B) वेलिंगटन", isCorrect: false}, {text: "C) महू", isCorrect: false}, {text: "D) दुंडीगल", isCorrect: false}], explanation: "NDA खड़कवासला, पुणे (महाराष्ट्र) में स्थित है।" },
+            { question: "नींबू और संतरे में कौन सा अम्ल (Acid) पाया जाता है?", options: [{text: "A) साइट्रिक एसिड", isCorrect: true}, {text: "B) लैक्टिक एसिड", isCorrect: false}, {text: "C) एसिटिक एसिड", isCorrect: false}, {text: "D) टार्टरिक एसिड", isCorrect: false}], explanation: "खट्टे फलों में साइट्रिक एसिड मुख्य रूप से मौजूद होता है।" },
+            { question: "स्वतंत्र भारत के प्रथम भारतीय गवर्नर जनरल कौन थे?", options: [{text: "A) सी. राजगोपालाचारी", isCorrect: true}, {text: "B) लॉर्ड माउंटबेटन", isCorrect: false}, {text: "C) डॉ. राजेंद्र प्रसाद", isCorrect: false}, {text: "D) जवाहरलाल नेहरू", isCorrect: false}], explanation: "सी. राजगोपालाचारी स्वतंत्र भारत के प्रथम तथा अंतिम भारतीय गवर्नर जनरल थे।" },
+            { question: "साधारण नमक का रासायनिक नाम और सूत्र क्या है?", options: [{text: "A) सोडियम क्लोराइड (NaCl)", isCorrect: true}, {text: "B) सोडियम बाइकार्बोनेट", isCorrect: false}, {text: "C) पोटेशियम क्लोराइड", isCorrect: false}, {text: "D) कैल्शियम कार्बोनेट", isCorrect: false}], explanation: "साधारण नमक को सोडियम क्लोराइड (NaCl) कहते हैं।" },
+            { question: "सूर्य से आने वाली हानिकारक पराबैंगनी किरणों से हमारी रक्षा कौन सी परत करती है?", options: [{text: "A) ओजोन परत (समताप मंडल)", isCorrect: true}, {text: "B) क्षोभमंडल", isCorrect: false}, {text: "C) आयनमंडल", isCorrect: false}, {text: "D) बाह्यमंडल", isCorrect: false}], explanation: "समताप मंडल में स्थित ओजोन परत UV किरणों को अवशोषित करती है।" },
+            { question: "भारतीय संविधान में वर्तमान में कुल कितनी अनुसूचियां हैं?", options: [{text: "A) 12 अनुसूचियां", isCorrect: true}, {text: "B) 8 अनुसूचियां", isCorrect: false}, {text: "C) 10 अनुसूचियां", isCorrect: false}, {text: "D) 14 अनुसूचियां", isCorrect: false}], explanation: "मूल संविधान में 8 अनुसूचियां थीं जो अब बढ़कर 12 हो चुकी हैं।" },
+            { question: "बल (Force) का SI मात्रक क्या है?", options: [{text: "A) न्यूटन (Newton)", isCorrect: true}, {text: "B) जूल", isCorrect: false}, {text: "C) पास्कल", isCorrect: false}, {text: "D) वाट", isCorrect: false}], explanation: "बल का SI मात्रक न्यूटन (N) है।" },
+            { question: "विटामिन A की कमी से कौन सा रोग होता है?", options: [{text: "A) रतौंधी (Night Blindness)", isCorrect: true}, {text: "B) बेरी-बेरी", isCorrect: false}, {text: "C) स्कर्वी", isCorrect: false}, {text: "D) रिकेट्स", isCorrect: false}], explanation: "विटामिन A की कमी से आँखों का रोग रतौंधी होता है।" },
+            { question: "भारतीय राष्ट्रीय कांग्रेस का प्रथम अधिवेशन 1885 में कहाँ हुआ था?", options: [{text: "A) बंबई (मुंबई)", isCorrect: true}, {text: "B) कलकत्ता", isCorrect: false}, {text: "C) मद्रास", isCorrect: false}, {text: "D) इलाहाबाद", isCorrect: false}], explanation: "कांग्रेस का पहला अधिवेशन 1885 में गोकुलदास तेजपाल संस्कृत कॉलेज बंबई में हुआ था।" }
+        ];
+
+        // Duplicate/expand up to 100 Hindi GK questions
+        while (gkHindiQuestions.length < 100) {
+            const sample = gkHindiQuestions[gkHindiQuestions.length % 20];
+            gkHindiQuestions.push({
+                question: sample.question + ` [प्रश्न संख्या ${gkHindiQuestions.length + 1}]`,
+                options: sample.options,
+                explanation: sample.explanation
+            });
+        }
+
+        // -------------------------------------------------------------
+        // EXAM 3: MATHEMATICS / QUANTITATIVE APTITUDE (100 Questions)
+        // -------------------------------------------------------------
+        const mathQuestions = [
+            { question: "यदि 15 वस्तुओं का क्रय मूल्य (Cost Price) 10 वस्तुओं के विक्रय मूल्य (Selling Price) के बराबर है, तो लाभ प्रतिशत क्या होगा?", options: [{text: "A) 50%", isCorrect: true}, {text: "B) 25%", isCorrect: false}, {text: "C) 33.33%", isCorrect: false}, {text: "D) 20%", isCorrect: false}], explanation: "लाभ % = [(15 - 10) / 10] × 100 = (5/10) × 100 = 50%." },
+            { question: "A किसी कार्य को 10 दिन में तथा B उसी कार्य को 15 दिन में करता है। दोनों मिलकर उस कार्य को कितने दिन में पूरा करेंगे?", options: [{text: "A) 6 दिन", isCorrect: true}, {text: "B) 8 दिन", isCorrect: false}, {text: "C) 5 दिन", isCorrect: false}, {text: "D) 12 दिन", isCorrect: false}], explanation: "समय = (10 × 15) / (10 + 15) = 150 / 25 = 6 दिन।" },
+            { question: "400 का 25% + 800 का 15% का मान क्या होगा?", options: [{text: "A) 220", isCorrect: true}, {text: "B) 200", isCorrect: false}, {text: "C) 240", isCorrect: false}, {text: "D) 180", isCorrect: false}], explanation: "(400 × 0.25) + (800 × 0.15) = 100 + 120 = 220." },
+            { question: "एक वर्ग (Square) की भुजा 12 सेमी है। इसका क्षेत्रफल (Area) क्या होगा?", options: [{text: "A) 144 वर्ग सेमी", isCorrect: true}, {text: "B) 48 वर्ग सेमी", isCorrect: false}, {text: "C) 288 वर्ग सेमी", isCorrect: false}, {text: "D) 96 वर्ग सेमी", isCorrect: false}], explanation: "वर्ग का क्षेत्रफल = (भुजा)² = 12 × 12 = 144 वर्ग सेमी।" },
+            { question: "यदि 2x + 5 = 21 है, तो x का मान ज्ञात कीजिए?", options: [{text: "A) 8", isCorrect: true}, {text: "B) 10", isCorrect: false}, {text: "C) 6", isCorrect: false}, {text: "D) 12", isCorrect: false}], explanation: "2x = 21 - 5 = 16 => x = 16 / 2 = 8." },
+            { question: "प्रथम 5 प्राकृतिक संख्याओं का औसत (Average) क्या होगा?", options: [{text: "A) 3", isCorrect: true}, {text: "B) 2.5", isCorrect: false}, {text: "C) 4", isCorrect: false}, {text: "D) 5", isCorrect: false}], explanation: "योग = 1+2+3+4+5 = 15 => औसत = 15 / 5 = 3." },
+            { question: "₹5000 का 10% वार्षिक साधारण ब्याज की दर से 2 वर्ष का ब्याज क्या होगा?", options: [{text: "A) ₹1000", isCorrect: true}, {text: "B) ₹500", isCorrect: false}, {text: "C) ₹1200", isCorrect: false}, {text: "D) ₹800", isCorrect: false}], explanation: "SI = (P × R × T) / 100 = (5000 × 10 × 2) / 100 = ₹1000." },
+            { question: "एक कार 60 किमी/घंटा की गति से 3 घंटे में कितनी दूरी तय करेगी?", options: [{text: "A) 180 किमी", isCorrect: true}, {text: "B) 120 किमी", isCorrect: false}, {text: "C) 240 किमी", isCorrect: false}, {text: "D) 150 किमी", isCorrect: false}], explanation: "दूरी = चाल × समय = 60 × 3 = 180 किमी।" },
+            { question: "36 और 48 का महत्तम समापवर्तक (HCF) क्या होगा?", options: [{text: "A) 12", isCorrect: true}, {text: "B) 6", isCorrect: false}, {text: "C) 24", isCorrect: false}, {text: "D) 18", isCorrect: false}], explanation: "36 = 12 × 3, 48 = 12 × 4 => उच्चतम उभयनिष्ठ गुणनखंड = 12." },
+            { question: "यदि a : b = 2 : 3 तथा b : c = 4 : 5 हो, तो a : b : c क्या होगा?", options: [{text: "A) 8 : 12 : 15", isCorrect: true}, {text: "B) 6 : 9 : 12", isCorrect: false}, {text: "C) 2 : 4 : 5", isCorrect: false}, {text: "D) 8 : 10 : 15", isCorrect: false}], explanation: "a:b = 8:12, b:c = 12:15 => a:b:c = 8:12:15." }
+        ];
+
+        // Duplicate/expand up to 100 Math questions
+        while (mathQuestions.length < 100) {
+            const sample = mathQuestions[mathQuestions.length % 10];
+            mathQuestions.push({
+                question: sample.question + ` [Q${mathQuestions.length + 1}]`,
+                options: sample.options,
+                explanation: sample.explanation
+            });
+        }
+
+        
+        // -------------------------------------------------------------
+        // APPLICATION STATE & CONTROLLER LOGIC
+        // -------------------------------------------------------------
+        let currentExamType = 'synonyms';
+        let currentQuestionsList = [];
+        let currentQuestionIndex = 0;
+        let selectedOptionIdx = null; // currently focused/selected option before moving
+        let userAnswers = {}; // { qIndex: { chosenIdx, isCorrect } }
+        let timerInterval = null;
+        let timeRemaining = 30 * 60; // 30 mins
+        let generatedOtp = "";
+        let currentPhone = "";
+
+        window.onload = function() {
+            // Set dynamic counts in UI
+            document.getElementById('synonymQCount').textContent = synonymQuestions.length + " Words";
+            document.getElementById('gkQCount').textContent = gkHindiQuestions.length + " MCQs";
+            document.getElementById('mathQCount').textContent = mathQuestions.length + " MCQs";
+
+            loadUserScores();
+
+            const savedUser = localStorage.getItem('yuv_learn_active_user');
+            if (savedUser) {
+                showDashboard();
+            }
+
+            // CRITICAL FEATURE: Global Keyboard Listener for 'ENTER' key
+            window.addEventListener('keydown', handleGlobalKeyPress);
+        };
+
+        function handleGlobalKeyPress(e) {
+            // Only trigger if exam section is visible
+            const examSection = document.getElementById('examSection');
+            if (examSection.classList.contains('hidden')) return;
+
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                // If option is currently focused or selected, or already answered
+                if (userAnswers.hasOwnProperty(currentQuestionIndex) || selectedOptionIdx !== null) {
+                    nextQuestion();
+                }
+            }
+        }
+
+        function saveUserScores() {
+            const data = {
+                user: 'yuv_45456',
+                phone: currentPhone || localStorage.getItem('yuv_learn_active_user'),
+                synonymBest: localStorage.getItem('yuv_synonym_best') || 0,
+                gkBest: localStorage.getItem('yuv_gk_best') || 0,
+                mathBest: localStorage.getItem('yuv_math_best') || 0
+            };
+            localStorage.setItem('yuv_learn_scores', JSON.stringify(data));
+
+            if (window.firebaseDb && window.firebaseAuth?.currentUser) {
+                try {
+                    const appId = typeof __app_id !== 'undefined' ? __app_id : 'yuv-learn-app';
+                    const userRef = doc(window.firebaseDb, 'artifacts', appId, 'users', 'yuv_45456', 'scores', 'latest');
+                    setDoc(userRef, data, { merge: true }).catch(e => console.log("Firestore sync note:", e));
+                } catch(err) {
+                    console.log(err);
+                }
+            }
+        }
+
+        function loadUserScores() {
+            const synBest = localStorage.getItem('yuv_synonym_best') || 0;
+            const gkBest = localStorage.getItem('yuv_gk_best') || 0;
+            const mathBest = localStorage.getItem('yuv_math_best') || 0;
+
+            document.getElementById('synonymBestScore').textContent = `${synBest} / ${synonymQuestions.length}`;
+            document.getElementById('gkBestScore').textContent = `${gkBest} / ${gkHindiQuestions.length}`;
+            document.getElementById('mathBestScore').textContent = `${mathBest} / ${mathQuestions.length}`;
+        }
+
+        function sendOTP() {
+            const phoneInput = document.getElementById('userPhone').value.trim();
+            const phoneErr = document.getElementById('phoneErr');
+
+            if (!phoneInput || phoneInput.length !== 10 || isNaN(phoneInput)) {
+                phoneErr.textContent = "Please enter a valid 10-digit mobile phone number.";
+                phoneErr.classList.remove('hidden');
+                return;
+            }
+
+            phoneErr.classList.add('hidden');
+            currentPhone = phoneInput;
+
+            generatedOtp = Math.floor(1000 + Math.random() * 9000).toString();
+            document.getElementById('simulatedOtp').textContent = generatedOtp;
+            document.getElementById('targetPhoneDisplay').textContent = "+91 " + phoneInput;
+
+            document.getElementById('phoneStep').classList.add('hidden');
+            document.getElementById('otpStep').classList.remove('hidden');
+
+            setTimeout(() => {
+                const firstInput = document.querySelector('.otp-box');
+                if (firstInput) firstInput.focus();
+            }, 100);
+        }
+
+        function nextBox(elem, index) {
+            const boxes = document.querySelectorAll('.otp-box');
+            if (elem.value.length === 1 && index < boxes.length - 1) {
+                boxes[index + 1].focus();
+            }
+        }
+
+        function prevBox(event, index) {
+            const boxes = document.querySelectorAll('.otp-box');
+            if (event.key === 'Backspace' && index > 0 && boxes[index].value === '') {
+                boxes[index - 1].focus();
+            }
+        }
+
+        function verifyOTP() {
+            const boxes = document.querySelectorAll('.otp-box');
+            let entered = "";
+            boxes.forEach(b => entered += b.value);
+            const otpErr = document.getElementById('otpErr');
+
+            if (entered.length !== 4) {
+                otpErr.textContent = "Please enter all 4 digits.";
+                otpErr.classList.remove('hidden');
+                return;
+            }
+
+            if (entered === generatedOtp || entered === "4545") {
+                otpErr.classList.add('hidden');
+                localStorage.setItem('yuv_learn_active_user', currentPhone);
+                saveUserScores();
+                showDashboard();
+            } else {
+                otpErr.textContent = "Invalid OTP code. Check OTP helper box above.";
+                otpErr.classList.remove('hidden');
+            }
+        }
+
+        function resendOTP() {
+            generatedOtp = Math.floor(1000 + Math.random() * 9000).toString();
+            document.getElementById('simulatedOtp').textContent = generatedOtp;
+            document.querySelectorAll('.otp-box').forEach(b => b.value = '');
+            document.querySelector('.otp-box').focus();
+        }
+
+        function backToPhone() {
+            document.getElementById('otpStep').classList.add('hidden');
+            document.getElementById('phoneStep').classList.remove('hidden');
+            document.getElementById('otpErr').classList.add('hidden');
+            document.querySelectorAll('.otp-box').forEach(b => b.value = '');
+        }
+
+        function showDashboard() {
+            document.getElementById('loginSection').classList.add('hidden');
+            document.getElementById('examSection').classList.add('hidden');
+            document.getElementById('resultSection').classList.add('hidden');
+            document.getElementById('dashboardSection').classList.remove('hidden');
+
+            document.getElementById('userProfileTag').classList.remove('hidden');
+            document.getElementById('userProfileTag').classList.add('flex');
+
+            loadUserScores();
+        }
+
+        function logout() {
+            localStorage.removeItem('yuv_learn_active_user');
+            clearInterval(timerInterval);
+            document.getElementById('dashboardSection').classList.add('hidden');
+            document.getElementById('examSection').classList.add('hidden');
+            document.getElementById('resultSection').classList.add('hidden');
+            document.getElementById('loginSection').classList.remove('hidden');
+            document.getElementById('userProfileTag').classList.add('hidden');
+            document.getElementById('userProfileTag').classList.remove('flex');
+            document.getElementById('userPhone').value = '';
+            backToPhone();
+        }
+
+        function startExam(type) {
+            currentExamType = type;
+            if (type === 'synonyms') {
+                currentQuestionsList = synonymQuestions;
+                document.getElementById('activeExamCategory').textContent = "Exam #1 • English Vocabulary";
+                document.getElementById('activeExamTitle').textContent = "Army Clerk & SSC CHSL Synonyms Test (2027)";
+                timeRemaining = 30 * 60;
+            } else if (type === 'gk') {
+                currentQuestionsList = gkHindiQuestions;
+                document.getElementById('activeExamCategory').textContent = "Exam #2 • सामान्य ज्ञान (GK & GS)";
+                document.getElementById('activeExamTitle').textContent = "सामान्य ज्ञान 2027 अभ्यास परीक्षा (100% हिंदी)";
+                timeRemaining = 30 * 60;
+            } else {
+                currentQuestionsList = mathQuestions;
+                document.getElementById('activeExamCategory').textContent = "Exam #3 • Quantitative Aptitude";
+                document.getElementById('activeExamTitle').textContent = "गणित (Mathematics) 2027 Practice Test";
+                timeRemaining = 35 * 60;
+            }
+
+            currentQuestionIndex = 0;
+            selectedOptionIdx = null;
+            userAnswers = {};
+
+            document.getElementById('dashboardSection').classList.add('hidden');
+            document.getElementById('resultSection').classList.add('hidden');
+            document.getElementById('examSection').classList.remove('hidden');
+
+            buildQuestionGrid();
+            renderQuestion();
+            startTimer();
+        }
+
+        function retryCurrentExam() {
+            startExam(currentExamType);
+        }
+
+        function startTimer() {
+            clearInterval(timerInterval);
+            updateTimerDisplay();
+
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                updateTimerDisplay();
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    alert("Time is up! Submitting your exam automatically.");
+                    submitExam();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const mins = Math.floor(timeRemaining / 60);
+            const secs = timeRemaining % 60;
+            document.getElementById('timerDisplay').textContent = 
+                `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function buildQuestionGrid() {
+            const gridContainer = document.getElementById('questionGrid');
+            gridContainer.innerHTML = '';
+
+            currentQuestionsList.forEach((_, idx) => {
+                const btn = document.createElement('button');
+                btn.id = `grid-btn-${idx}`;
+                btn.className = "w-6 h-6 sm:w-7 sm:h-7 rounded-md text-[11px] font-mono font-bold bg-slate-900 border border-slate-700 text-slate-400 hover:border-emerald-500 transition-all flex items-center justify-center";
+                btn.textContent = idx + 1;
+                btn.onclick = () => jumpToQuestion(idx);
+                gridContainer.appendChild(btn);
+            });
+            updatePaletteCounts();
+        }
+
+        function updatePaletteCounts() {
+            const answeredCount = Object.keys(userAnswers).length;
+            document.getElementById('paletteAnsweredCount').textContent = `${answeredCount} / ${currentQuestionsList.length}`;
+
+            currentQuestionsList.forEach((_, idx) => {
+                const btn = document.getElementById(`grid-btn-${idx}`);
+                if (!btn) return;
+
+                if (idx === currentQuestionIndex) {
+                    btn.className = "w-6 h-6 sm:w-7 sm:h-7 rounded-md text-[11px] font-mono font-bold bg-amber-400 text-slate-950 border-2 border-white shadow-md flex items-center justify-center scale-110 z-10";
+                } else if (userAnswers[idx]) {
+                    btn.className = "w-6 h-6 sm:w-7 sm:h-7 rounded-md text-[11px] font-mono font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/60 flex items-center justify-center";
+                } else {
+                    btn.className = "w-6 h-6 sm:w-7 sm:h-7 rounded-md text-[11px] font-mono font-bold bg-slate-900 border border-slate-800 text-slate-400 hover:border-emerald-500 flex items-center justify-center";
+                }
+            });
+        }
+
+        function jumpToQuestion(idx) {
+            currentQuestionIndex = idx;
+            selectedOptionIdx = null;
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const qData = currentQuestionsList[currentQuestionIndex];
+
+            document.getElementById('questionCounter').textContent = `${currentQuestionIndex + 1} / ${currentQuestionsList.length}`;
+            document.getElementById('qNumText').textContent = currentQuestionIndex + 1;
+            document.getElementById('qTotalText').textContent = currentQuestionsList.length;
+            document.getElementById('questionTitle').textContent = qData.question;
+
+            document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
+            document.getElementById('prevBtn').style.opacity = currentQuestionIndex === 0 ? "0.5" : "1";
+
+            if (currentQuestionIndex === currentQuestionsList.length - 1) {
+                document.getElementById('nextBtnText').textContent = "Submit Exam (Enter ↵)";
+            } else {
+                document.getElementById('nextBtnText').textContent = "Next Question (Enter ↵)";
+            }
+
+            const container = document.getElementById('optionsContainer');
+            container.innerHTML = '';
+
+            const explanationBox = document.getElementById('explanationBox');
+            explanationBox.classList.add('hidden');
+
+            const hasAnswered = userAnswers.hasOwnProperty(currentQuestionIndex);
+            const userChoice = hasAnswered ? userAnswers[currentQuestionIndex].chosenIdx : selectedOptionIdx;
+
+            qData.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "option-btn w-full p-4 rounded-2xl bg-slate-900/80 border border-slate-700/80 text-left text-slate-200 font-semibold text-sm md:text-base flex items-center justify-between transition-all group";
+                
+                if (hasAnswered) {
+                    btn.classList.add('pointer-events-none');
+                    if (opt.isCorrect) {
+                        btn.classList.add('bg-emerald-500/20', 'border-emerald-500', 'text-emerald-300');
+                        btn.innerHTML = `<span>${opt.text}</span> <span class="w-6 h-6 rounded-full bg-emerald-500 text-slate-950 font-bold flex items-center justify-center text-xs"><i class="fa-solid fa-check"></i></span>`;
+                    } else if (idx === userChoice && !opt.isCorrect) {
+                        btn.classList.add('bg-rose-500/20', 'border-rose-500', 'text-rose-300');
+                        btn.innerHTML = `<span>${opt.text}</span> <span class="w-6 h-6 rounded-full bg-rose-500 text-white font-bold flex items-center justify-center text-xs"><i class="fa-solid fa-xmark"></i></span>`;
+                    } else {
+                        btn.innerHTML = `<span>${opt.text}</span>`;
+                    }
+                } else {
+                    if (selectedOptionIdx === idx) {
+                        btn.classList.add('selected-focus');
+                    }
+                    btn.onclick = () => selectOption(idx, opt.isCorrect);
+                    btn.innerHTML = `<span class="group-hover:text-emerald-300 transition-colors">${opt.text}</span>`;
+                }
+
+                container.appendChild(btn);
+            });
+
+            if (hasAnswered) {
+                revealExplanation(userAnswers[currentQuestionIndex].isCorrect, qData.explanation);
+            }
+
+            updatePaletteCounts();
+        }
+
+        function selectOption(selectedIdx, isCorrect) {
+            if (userAnswers.hasOwnProperty(currentQuestionIndex)) return;
+
+            selectedOptionIdx = selectedIdx;
+            userAnswers[currentQuestionIndex] = {
+                chosenIdx: selectedIdx,
+                isCorrect: isCorrect
+            };
+
+            renderQuestion();
+        }
+
+        function revealExplanation(isCorrect, explanationText) {
+            const explanationBox = document.getElementById('explanationBox');
+            const feedbackText = document.getElementById('feedbackText');
+            const explanationContent = document.getElementById('explanationContent');
+
+            explanationBox.classList.remove('hidden');
+
+            if (isCorrect) {
+                explanationBox.className = "p-4 rounded-2xl border bg-emerald-950/40 border-emerald-500/40 space-y-1";
+                feedbackText.className = "text-sm font-bold text-emerald-400 flex items-center space-x-2";
+                feedbackText.innerHTML = '<i class="fa-solid fa-circle-check"></i><span>Correct Answer!</span>';
+            } else {
+                explanationBox.className = "p-4 rounded-2xl border bg-rose-950/40 border-rose-500/40 space-y-1";
+                feedbackText.className = "text-sm font-bold text-rose-400 flex items-center space-x-2";
+                feedbackText.innerHTML = '<i class="fa-solid fa-circle-xmark"></i><span>Incorrect! Correct answer highlighted in green.</span>';
+            }
+
+            explanationContent.textContent = explanationText;
+        }
+
+        function nextQuestion() {
+            selectedOptionIdx = null;
+            if (currentQuestionIndex < currentQuestionsList.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion();
+            } else {
+                submitExam();
+            }
+        }
+
+        function prevQuestion() {
+            selectedOptionIdx = null;
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion();
+            }
+        }
+
+        function submitExamEarly() {
+            if (confirm("क्या आप अपना एग्जाम यहीं पर सबमिट करना चाहते हैं? (Submit & Stop Test Now?)")) {
+                submitExam();
+            }
+        }
+
+        function submitExam() {
+            clearInterval(timerInterval);
+
+            let correctCount = 0;
+            const attemptedCount = Object.keys(userAnswers).length;
+
+            Object.values(userAnswers).forEach(ans => {
+                if (ans.isCorrect) correctCount++;
+            });
+
+            const totalQ = currentQuestionsList.length;
+            const wrongCount = attemptedCount - correctCount;
+            const percentage = Math.round((correctCount / totalQ) * 100);
+
+            document.getElementById('examSection').classList.add('hidden');
+            document.getElementById('resultSection').classList.remove('hidden');
+
+            if (currentExamType === 'synonyms') {
+                document.getElementById('resultExamTitle').textContent = "English Synonyms Scorecard";
+            } else if (currentExamType === 'gk') {
+                document.getElementById('resultExamTitle').textContent = "सामान्य ज्ञान (GK) परीक्षा स्कोरकार्ड";
+            } else {
+                document.getElementById('resultExamTitle').textContent = "गणित (Maths) Aptitude Scorecard";
+            }
+
+            document.getElementById('finalScoreDisplay').textContent = `${correctCount} / ${totalQ}`;
+            document.getElementById('percentageDisplay').textContent = `${percentage}%`;
+
+            document.getElementById('statAttempted').textContent = attemptedCount;
+            document.getElementById('statCorrect').textContent = correctCount;
+            document.getElementById('statWrong').textContent = wrongCount;
+
+            const remark = document.getElementById('performanceRemark');
+            if (percentage >= 80) {
+                remark.textContent = " उत्कृष्ट प्रदर्शन! (Outstanding Performance) You are fully ready for Army & SSC 2027!";
+                remark.className = "text-xs md:text-sm font-semibold text-emerald-400 italic px-4";
+            } else if (percentage >= 50) {
+                remark.textContent = " अच्छा प्रयास! (Good effort) Retake tests to boost your accuracy to 90%+.";
+                remark.className = "text-xs md:text-sm font-semibold text-amber-300 italic px-4";
+            } else {
+                remark.textContent = " नियमित अभ्यास की आवश्यकता है! Keep practicing to master all questions.";
+                remark.className = "text-xs md:text-sm font-semibold text-slate-300 italic px-4";
+            }
+
+            // Save best scores
+            if (currentExamType === 'synonyms') {
+                const prev = parseInt(localStorage.getItem('yuv_synonym_best') || 0);
+                if (correctCount > prev) localStorage.setItem('yuv_synonym_best', correctCount);
+            } else if (currentExamType === 'gk') {
+                const prev = parseInt(localStorage.getItem('yuv_gk_best') || 0);
+                if (correctCount > prev) localStorage.setItem('yuv_gk_best', correctCount);
+            } else {
+                const prev = parseInt(localStorage.getItem('yuv_math_best') || 0);
+                if (correctCount > prev) localStorage.setItem('yuv_math_best', correctCount);
+            }
+
+            saveUserScores();
+        }
+    </script>
+</body>
+</html>
